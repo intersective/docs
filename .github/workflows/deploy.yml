@@ -8,4 +8,6 @@ jobs:
     name: deploy-to-github-page
     runs-on: ubuntu-latest
     steps:
-      - run: ./deploy.sh
+      - run: |
+        chmod +x ./deploy.sh
+        ./deploy.sh
