@@ -1,11 +1,82 @@
+################################################
+#  GITHUB ACTION WORKFLOW NAME
+################################################
 name: Deploy to Github Page
-on:
+
+################################################
+#  GITHUB ACTION EVENT TRIGGER
+################################################
+on: 
   workflow_dispatch:
   push:
     branches: [ 'master' ]
+
+
+
+################################################
+#  GITHUB ACTION JOBS
+################################################
 jobs:
   deploy-to-github-page:
     name: deploy-to-github-page
     runs-on: ubuntu-latest
+
+
+################################################
+#  GITHUB ACTIONS GLOBAL ENV VARIABLES  
+################################################
+    env:
+      ENV : live 
+      STACK_NAME: docs
+
+
+################################################
+#  GITHUB REPO CHECKOUT 
+################################################
     steps:
-      - run: ./deploy.sh
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+
+####################################################
+#  CLOUDFORMATION ADDITIONAL TAG; KEY=VALUE FORMAT
+####################################################      
+      - name: Create additional cloudformation tags for stack deployment
+        run: |
+          bash deploy.sh
+
+
+##########################################################
+#  SLACK NOTIFICATION
+##########################################################       
+      - name: Slack Notification
+        if: always() # Pick up events even if the job fails or is canceled.
+        uses: 8398a7/action-slack@v3
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          MATRIX_CONTEXT: ${{ toJson(matrix) }} # required
+        with:
+          status: ${{ job.status }}
+          author_name: practera-docs
+          mention: 'here'
+          if_mention: failure,cancelled
+          job_name: deploy-to-github-page # Match the name above.
+          fields: repo,commit,eventName,ref,workflow,message,author,job,took
+          custom_payload: |
+            {
+            username: 'GitHub Action CI WorkFlow',
+            icon_emoji: ':github:',
+            attachments: [{
+              color: '${{ job.status }}' === 'success' ? 'good' : ${{ job.status }}' === 'failure' ? 'danger' : 'warning',
+              text:
+             `${process.env.AS_REPO}\n
+              ${process.env.AS_COMMIT}\n
+              ${process.env.AS_EVENT_NAME}\n
+              @${process.env.AS_REF}\n
+              @${process.env.AS_WORKFLOW}\n
+              ${process.env.AS_MESSAGE}\n
+              ${process.env.AS_AUTHOR}\n
+              ${process.env.AS_JOB}\n
+              ${process.env.AS_TOOK}`,
+            }]
+            }
