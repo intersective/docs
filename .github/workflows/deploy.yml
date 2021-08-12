@@ -39,9 +39,9 @@ jobs:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
 ####################################################
-#  CLOUDFORMATION ADDITIONAL TAG; KEY=VALUE FORMAT
+#  Run Bash Script
 ####################################################      
-      - name: Create additional cloudformation tags for stack deployment
+      - name: Run bash script
         run: |
           bash deploy.sh
 
