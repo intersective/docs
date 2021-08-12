@@ -1,0 +1,11 @@
+name: Deploy to Github Page
+on:
+  workflow_dispatch:
+  push:
+    branches: [ 'master' ]
+jobs:
+  deploy-to-github-page:
+    name: deploy-to-github-page
+    runs-on: ubuntu-latest
+    steps:
+      - run: ./deploy.sh
