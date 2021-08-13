@@ -90,15 +90,13 @@ jobs:
 ####################################################      
       - name: Run git add, commit and push
         run: |
-          mkdir tmp
-          git clone --branch gh-pages https://$GITHUB_TOKEN@github.com/intersective/docs.git tmp/
-          cp -R src/.vuepress/dist/ tmp/
-          ls -al tmp
+          # navigate into the build output directory
+          cd src/.vuepress/dist
           git config --global user.name 'githubaction'
           git config --global user.email 'githubaction@practera.com'
           git add -A
           git commit -m "deploy docs"
-          git push -u origin gh-pages
+          git push -f git@github.com:intersective/docs.git master:gh-pages
 
 
 # ##########################################################
