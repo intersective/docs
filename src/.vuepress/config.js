@@ -41,8 +41,8 @@ module.exports = {
         link: '/development/'
       },
       {
-        text: 'References',
-        link: '/references/',
+        text: 'Resources',
+        link: '/resources/',
       },
       // {
       //   text: 'VuePress',
@@ -60,9 +60,9 @@ module.exports = {
           ]
         }
       ],
-      '/references/': [
+      '/resources/': [
         {
-          title: 'References',
+          title: 'Resources',
           collapsable: false,
           children: [
             '',
