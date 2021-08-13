@@ -4,7 +4,7 @@ We use [VuePress](https://vuepress.vuejs.org/) to build this documentation.
 
 ## Install
 
-* run `npm run install` to install the packages
+* run `npm install` to install the packages
 * run `npm run dev` to start a server on local
 
 ## Create new doc

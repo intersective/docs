@@ -40,10 +40,10 @@ module.exports = {
         text: 'Development',
         link: '/development/'
       },
-      // {
-      //   text: 'Guide',
-      //   link: '/guide/',
-      // },
+      {
+        text: 'References',
+        link: '/references/',
+      },
       // {
       //   text: 'VuePress',
       //   link: 'https://v1.vuepress.vuejs.org'
@@ -60,13 +60,15 @@ module.exports = {
           ]
         }
       ],
-      '/guide/': [
+      '/references/': [
         {
-          title: 'Guide',
+          title: 'References',
           collapsable: false,
           children: [
             '',
-            'using-vue',
+            'internal',
+            'external',
+            'command'
           ]
         }
       ],
