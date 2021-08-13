@@ -81,7 +81,7 @@ jobs:
 ####################################################
 #  NPM RUN BUILD
 ####################################################      
-      - name: Run bash script
+      - name: Run npm build
         run: |
           npm run build
 
