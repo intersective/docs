@@ -1,6 +1,7 @@
 # Practera Docs
 
-[Documentation](https://intersective.github.io/docs/)
+See the [Documentation](https://intersective.github.io/docs/)
+
 We use [VuePress](https://vuepress.vuejs.org/) to build this documentation.
 
 ## Install
