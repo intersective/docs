@@ -90,6 +90,8 @@ jobs:
 ####################################################      
       - name: Run git add, commit and push
         run: |
+          git config --global user.name 'githubaction'
+          git config --global user.email 'githubaction@practera.com'
           bash fix.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
