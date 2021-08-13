@@ -92,8 +92,8 @@ jobs:
         run: |
           mkdir tmp
           git clone --branch gh-pages https://$GITHUB_TOKEN@github.com/intersective/docs.git tmp/
-          cp -R src/.vuepress/dist/ temp/
-          ls -al
+          cp -R src/.vuepress/dist/ tmp/
+          ls -al tmp
           git config --global user.name 'githubaction'
           git config --global user.email 'githubaction@practera.com'
           git add -A
