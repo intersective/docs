@@ -90,13 +90,7 @@ jobs:
 ####################################################      
       - name: Run git add, commit and push
         run: |
-          # navigate into the build output directory
-          cd src/.vuepress/dist
-          git config --global user.name 'githubaction'
-          git config --global user.email 'githubaction@practera.com'
-          git add -A
-          git commit -m "deploy docs"
-          git push -f git@github.com:intersective/docs.git master:gh-pages
+          bash fix.sh
 
 
 # ##########################################################
