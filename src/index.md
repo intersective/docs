@@ -2,7 +2,7 @@
 home: true
 heroImage: /logo.png
 tagline: Documentations of Practera related things
-actionText: Quick Start →
+actionText: Start →
 actionLink: /development/
 # features:
 # - title: Feature 1 Title

@@ -1,5 +1,7 @@
 # Practera Docs
 
+[![Build and Deploy](https://github.com/intersective/docs/actions/workflows/build-deploy.yml/badge.svg)](https://github.com/intersective/docs/actions/workflows/build-deploy.yml)
+
 See the [Documentation](https://intersective.github.io/docs/)
 
 We use [VuePress](https://vuepress.vuejs.org/) to build this documentation.
