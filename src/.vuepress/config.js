@@ -1,4 +1,7 @@
 const { description } = require('../../package')
+const glob = require('glob');
+
+const mdFileNames = (folder) => glob.sync(`src/${folder}/+([0-9]).*.md`).map(f => f.split('/').pop().replace(/.md$/, ''));
 
 module.exports = {
   base: '/docs/',
@@ -38,38 +41,26 @@ module.exports = {
     nav: [
       {
         text: 'Development',
-        link: '/development/'
+        link: '/development/0.introduction.html'
       },
       {
         text: 'Resources',
-        link: '/resources/',
-      },
-      // {
-      //   text: 'VuePress',
-      //   link: 'https://v1.vuepress.vuejs.org'
-      // }
+        link: '/resources/0.introduction.html',
+      }
     ],
     sidebar: {
       '/development/': [
         {
           title: 'Development',
           collapsable: false,
-          children: [
-            '',
-            'git-branch-environments',
-          ]
+          children: mdFileNames('development')
         }
       ],
       '/resources/': [
         {
           title: 'Resources',
           collapsable: false,
-          children: [
-            '',
-            'internal',
-            'external',
-            'command'
-          ]
+          children: mdFileNames('resources')
         }
       ],
     }

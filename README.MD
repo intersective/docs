@@ -15,8 +15,7 @@ We use [VuePress](https://vuepress.vuejs.org/) to build this documentation.
 
 ### Create a new doc under an existing section
 
-1. under the section's folder (e.g. `/src/development/`), create a new MarkDown file (e.g. `new-doc.md`)
-1. go to `/src/.vuepress/config.js`, add the newly added file name to the children of the section (e.g. `themeConfig.sidebar.'/development/'.children`) (without `.md`)
+* under the section's folder (e.g. `/src/development/`), create a new MarkDown file with the name starting by a number and `.` (e.g. `10.new-doc.md`). The files will be ordered by the starting number in the sidebar.
 
 ### Create a new section with documentations
 
