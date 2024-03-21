@@ -44,6 +44,10 @@ module.exports = {
         link: '/development/0.introduction.html'
       },
       {
+        text: 'Features',
+        link: '/features/0.introduction.html',
+      },
+      {
         text: 'Resources',
         link: '/resources/0.introduction.html',
       }
@@ -54,6 +58,13 @@ module.exports = {
           title: 'Development',
           collapsable: false,
           children: mdFileNames('development')
+        }
+      ],
+      '/features/': [
+        {
+          title: 'Feature',
+          collapsable: false,
+          children: mdFileNames('features')
         }
       ],
       '/resources/': [
