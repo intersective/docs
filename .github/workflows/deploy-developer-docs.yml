@@ -1,0 +1,61 @@
+name: Deploy Developer Docs
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/developer/**'
+      - 'mkdocs-dev.yml'
+      - 'requirements.txt'
+      - 'docs/stylesheets/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build developer docs
+        run: |
+          echo "Building developer docs site..."
+          mkdocs build -f mkdocs-dev.yml --site-dir site-dev
+          echo "Files generated: $(find site-dev -type f | wc -l)"
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: practera-developer-docs
+          directory: site-dev
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deployment summary
+        if: success()
+        run: |
+          echo "## Developer Docs Deployed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Setting | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|---------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| **Site** | https://developers.practera.com |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Auth** | Cloudflare Access — GitHub OAuth (intersective org) |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Commit** | \`${{ github.sha }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Deployed by** | @${{ github.actor }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "> **Setup required**: CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID must be added as GitHub repository secrets." >> $GITHUB_STEP_SUMMARY
+          echo "> Cloudflare Access policy (GitHub OAuth restricted to intersective org) must be configured in the Cloudflare dashboard." >> $GITHUB_STEP_SUMMARY

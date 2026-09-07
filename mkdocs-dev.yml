@@ -1,0 +1,65 @@
+site_name: Practera Developer Docs
+site_description: Technical specifications, architecture, and alignment documentation for the Practera platform
+site_author: Practera Engineering
+site_url: https://developers.practera.com
+
+theme:
+  name: material
+  language: en
+  logo: stylesheets/logo.png
+  favicon: stylesheets/logo.ico
+  features:
+    - navigation.tabs
+    - navigation.top
+    - navigation.indexes
+    - navigation.sections
+    - navigation.tracking
+    - toc.integrate
+    - toc.follow
+    - navigation.instant
+    - navigation.footer
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: blue
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: blue
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - stylesheets/force-toc.js
+  - stylesheets/extra.js
+
+plugins:
+  - search
+
+docs_dir: docs
+
+nav:
+  - Platform Overview: developer/index.md
+  - System Architecture: developer/architecture.md
+  - Value Chain:
+    - Overview: developer/value-chain.md
+    - Experience Design:
+      - Overview: developer/design/index.md
+    - Project Sourcing:
+      - Overview: developer/sourcing/index.md
+    - Experience Delivery:
+      - Overview: developer/delivery/index.md
+    - Reporting:
+      - Overview: developer/reporting/index.md
+  - Alignment:
+    - Status Matrix: developer/alignment/index.md
+  - API Reference:
+    - Overview: developer/api/index.md

@@ -1,0 +1,260 @@
+site_name: Support Center
+site_description: Comprehensive support documentation for Practera users
+site_author: Practera Team
+site_url: https://support.practera.com
+extra:
+  assets_dir: assets
+theme:
+  name: material
+  language: en
+  logo: stylesheets/logo.png
+  favicon: stylesheets/logo.ico
+  features:
+  - navigation.tabs
+  - navigation.top
+  - navigation.indexes
+  - navigation.sections
+  - navigation.tracking
+  - toc.integrate
+  - toc.follow
+  - navigation.instant
+  - navigation.footer
+  - search.highlight
+  - content.code.copy
+  palette:
+  - media: '(prefers-color-scheme: light)'
+    scheme: default
+    primary: custom
+    accent: blue
+  font:
+    text: Roboto
+    code: Roboto Mono
+extra_css:
+- stylesheets/extra.css
+extra_javascript:
+- stylesheets/force-toc.js
+- stylesheets/extra.js
+nav:
+- Home: index.md
+- Admin Platform:
+  - Overview: admin-platform/index.md
+  - Getting Started:
+    - Getting Started Overview: admin-platform/getting-started/index.md
+    - Logging In: admin-platform/getting-started/logging-in.md
+    - Navigation: admin-platform/getting-started/navigation.md
+    - Switching Experiences: admin-platform/getting-started/switching-experiences.md
+  - Dashboard: admin-platform/dashboard/index.md
+  - Experiences:
+    - Experiences Overview: admin-platform/experiences/index.md
+    - Settings: admin-platform/experiences/settings.md
+    - Going Live: admin-platform/experiences/go-live.md
+  - Institutions:
+    - Institutions Overview: admin-platform/institutions/index.md
+    - Institution Detail: admin-platform/institutions/overview.md
+    - Branding: admin-platform/institutions/branding.md
+    - Integrations: admin-platform/institutions/integrations.md
+    - Data Deletion: admin-platform/institutions/data-deletion.md
+  - Users & Enrolments:
+    - Users Overview: admin-platform/users/index.md
+    - Enrolments: admin-platform/users/enrolments.md
+    - Teams: admin-platform/users/teams.md
+  - Deliver:
+    - Deliver Overview: admin-platform/deliver/index.md
+    - Feedback Pipeline: admin-platform/deliver/feedback.md
+    - Comms & Chat: admin-platform/deliver/chat.md
+    - Reports: admin-platform/deliver/reports.md
+    - Progress & Metrics: admin-platform/deliver/progress.md
+  - Setup:
+    - Setup Overview: admin-platform/setup/index.md
+    - Experience Designer: admin-platform/setup/designer.md
+    - Calendar: admin-platform/setup/calendar.md
+    - Media Library: admin-platform/setup/media-library.md
+  - Expert:
+    - Expert Tools: admin-platform/expert/index.md
+    - Triggers & Badges: admin-platform/expert/triggers.md
+- Platform:
+  - Overview: platform/index.md
+  - Feature Catalog: platform/feature-catalog.md
+  - Strategic Roadmap: platform/strategic-roadmap.md
+- Help Center:
+  - Onboarding:
+    - Onboarding Overview: help-articles/onboarding/index.md
+    - Branding Your Experience: help-articles/onboarding/branding-your-experience.md
+    - Changing Experience Settings: help-articles/onboarding/changing-experience-settings.md
+    - Determining Which Notifications Get Sent: help-articles/onboarding/determining-which-notifications-get-sent.md
+    - Experience Status: help-articles/onboarding/experience-status.md
+    - Exploring the Experience Library: help-articles/onboarding/exploring-the-experience-library.md
+    - Getting Further Help: help-articles/onboarding/getting-further-help.md
+    - How to Duplicate an Experience: help-articles/onboarding/how-to-duplicate-an-experience.md
+    - Logging In: help-articles/onboarding/logging-in.md
+    - Previewing Your Experience: help-articles/onboarding/previewing-your-experience.md
+    - Selecting an Experience: help-articles/onboarding/selecting-an-experience.md
+    - The Experience Portal Explained: help-articles/onboarding/the-experience-portal-explained.md
+    - The Practera Glossary: help-articles/onboarding/the-practera-glossary.md
+    - What is Experiential Learning: help-articles/onboarding/what-is-experiential-learning.md
+  - Essentials:
+    - Essentials Overview: help-articles/essentials/index.md
+    - Bulk Enrolment via CSV Upload: help-articles/essentials/bulk-enrolment-via-csv-upload.md
+    - Communicating With Experience Participants: help-articles/essentials/communicating-with-experience-participants.md
+    - Communicating With Learners And Experts: help-articles/essentials/communicating-with-learners-and-experts.md
+    - Creating Teams: help-articles/essentials/creating-teams.md
+    - Enrolling Learners Experts: help-articles/essentials/enrolling-learners-experts.md
+    - Going Live: help-articles/essentials/going-live.md
+    - Scheduling Due Dates: help-articles/essentials/scheduling-due-dates.md
+    - Deleting User Data: help-articles/essentials/deleting-user-data.md
+  - Becoming a Practera Power User:
+    - Becoming a Practera Power User Overview: help-articles/becoming-a-practera-power-user/index.md
+    - Add Activity Images: help-articles/becoming-a-practera-power-user/add-activity-images.md
+    - Adding Certificates to Your Experience: help-articles/becoming-a-practera-power-user/adding-certificates-to-your-experience.md
+    - Adding Media to Instructions: help-articles/becoming-a-practera-power-user/adding-media-to-instructions.md
+    - Create Custom Templates: help-articles/becoming-a-practera-power-user/create-custom-templates.md
+    - Creating Instructions: help-articles/becoming-a-practera-power-user/creating-instructions.md
+    - Embedding Qualtrics Surveys: help-articles/becoming-a-practera-power-user/embedding-qualtrics-surveys.md
+    - The Experience Designer Overview: help-articles/becoming-a-practera-power-user/the-experience-designer-overview.md
+    - 'Visual Cues: Locks, Red Dots & Bookmarks': help-articles/becoming-a-practera-power-user/visual-cues.md
+  - Creating Adaptive Learning Pathways:
+    - Creating Adaptive Learning Pathways Overview: help-articles/creating-adaptive-learning-pathways/index.md
+    - Awarding a Manual Trigger: help-articles/creating-adaptive-learning-pathways/awarding-a-manual-trigger.md
+    - Creating and Configuring Triggers: help-articles/creating-adaptive-learning-pathways/creating-and-configuring-triggers.md
+    - Creating Badges for Your Experience: help-articles/creating-adaptive-learning-pathways/creating-badges-for-your-experience.md
+    - Whats the Difference Between Locking and Hiding: help-articles/creating-adaptive-learning-pathways/whats-the-difference-between-locking-and-hiding.md
+  - Delivering Experiential Learning:
+    - Delivering Experiential Learning Overview: help-articles/delivering-experiential-learning/index.md
+    - Planning and Scheduling Events: help-articles/delivering-experiential-learning/planning-and-scheduling-events.md
+    - Pulse Checks: help-articles/delivering-experiential-learning/pulse-checks.md
+    - Skills & Progress Tab: help-articles/delivering-experiential-learning/skills-and-progress-tab.md
+    - Reportcard: help-articles/delivering-experiential-learning/reportcard.md
+    - Review Rating: help-articles/delivering-experiential-learning/review-rating.md
+    - Student Emulator: help-articles/delivering-experiential-learning/student-emulator.md
+  - Designing Feedback Loops:
+    - Designing Feedback Loops Overview: help-articles/designing-feedback-loops/index.md
+    - Allowing Resubmission: help-articles/designing-feedback-loops/allowing-resubmission.md
+    - Configuring Assessments: help-articles/designing-feedback-loops/configuring-assessments.md
+    - Creating Assessments with AI Feedback: help-articles/designing-feedback-loops/creating-assessments-with-ai-feedback.md
+    - Creating Different Question Types: help-articles/designing-feedback-loops/creating-different-question-types.md
+    - Deleting a Review on a Moderated Assessment: help-articles/designing-feedback-loops/deleting-a-review-on-a-moderated-assessment.md
+    - Deleting an Assessment Submission: help-articles/designing-feedback-loops/deleting-an-assessment-submission.md
+    - How to Publish Team 360 Reports: help-articles/designing-feedback-loops/how-to-publish-team-360-reports.md
+    - Managing Your Feedback Loops: help-articles/designing-feedback-loops/managing-your-feedback-loops.md
+    - Practera AI Feedback Prompt Framework: help-articles/designing-feedback-loops/practera-ai-feedback-prompt-framework.md
+    - Preparing Feedback Loops: help-articles/designing-feedback-loops/preparing-feedback-loops.md
+    - Selecting Assessment Types: help-articles/designing-feedback-loops/selecting-assessment-types.md
+    - Sending Assessment Reminders: help-articles/designing-feedback-loops/sending-assessment-reminders.md
+    - Setting Up Assessment Scores: help-articles/designing-feedback-loops/setting-up-assessment-scores.md
+  - ELSA AI-Based Experiential Learning Support Assistant:
+    - ELSA AI-Based Experiential Learning Support Assistant Overview: help-articles/elsa-ai-based-experiential-learning-support-assistant/index.md
+    - The Experience Dashboard Explained: help-articles/elsa-ai-based-experiential-learning-support-assistant/the-experience-dashboard-explained.md
+  - Institution Set-up:
+    - Institution Set-up Overview: help-articles/institution-set-up/index.md
+    - Adding New Administrators Authors and Coordinators and Institution Wide User Overview: help-articles/institution-set-up/adding-new-administrators-authors-and-coordinators-and-institution-wide-user-overview.md
+    - Audit Log of Admin Activity: help-articles/institution-set-up/audit-log-of-admin-activity.md
+    - Branding Your Institution: help-articles/institution-set-up/branding-your-institution.md
+    - Changing Institution Settings: help-articles/institution-set-up/changing-institution-settings.md
+    - Understanding User Roles: help-articles/institution-set-up/understanding-user-roles.md
+  - Integrations:
+    - Integrations Overview: help-articles/integrations/index.md
+    - Creating Assessments with AI Feedback: help-articles/integrations/creating-assessments-with-ai-feedback.md
+    - Embedding Practera with Brightspace LTI 1 3: help-articles/integrations/embedding-practera-with-brightspace-lti-1-3.md
+    - Embedding Practera with Moodle LTI 1 3: help-articles/integrations/embedding-practera-with-moodle-lti-1-3.md
+    - How to Embed Your Practera App in Canvas: help-articles/integrations/how-to-embed-your-practera-app-in-canvas.md
+    - Integrating Practera to Moodle: help-articles/integrations/integrating-practera-to-moodle.md
+  - Practera Metrics:
+    - Practera Metrics Overview: help-articles/practera-metrics/index.md
+    - Creating New Metrics: help-articles/practera-metrics/creating-new-metrics.md
+    - Skills Growth Report: help-articles/practera-metrics/skills-growth-report.md
+  - Practera Updates:
+    - Practera Updates Overview: help-articles/practera-updates/index.md
+    - Release Notes: releases/index.md
+- FAQ: faq/index.md
+- Operations:
+  - Environment Variables: operations/environment-variables.md
+- Releases:
+  - releases/index.md
+  - v2.6.0: releases/v2.6.0.md
+  - v2.5.2: releases/v2.5.2.md
+  - v2.5.1: releases/v2.5.1.md
+  - v2.5.0: releases/v2.5.0.md
+  - v2.4.10.2: releases/v2.4.10.2.md
+  - v2.4.10.1: releases/v2.4.10.1.md
+  - v2.4.10: releases/v2.4.10.md
+  - v2.4.9: releases/v2.4.9.md
+  - v2.4.8.2: releases/v2.4.8.2.md
+  - v2.4.8.1: releases/v2.4.8.1.md
+  - v2.4.8: releases/v2.4.8.md
+  - v2.4.7.2: releases/v2.4.7.2.md
+  - v2.4.7.1: releases/v2.4.7.1.md
+  - v2.4.7: releases/v2.4.7.md
+  - v2.4.6: releases/v2.4.6.md
+  - v2.4.5.4: releases/v2.4.5.4.md
+  - v2.4.5.3: releases/v2.4.5.3.md
+  - v2.4.5.2: releases/v2.4.5.2.md
+  - v2.4.5.1: releases/v2.4.5.1.md
+  - v2.4.5: releases/v2.4.5.md
+  - v2.4.4.3: releases/v2.4.4.3.md
+  - v2.4.4.2: releases/v2.4.4.2.md
+  - v2.4.4: releases/v2.4.4.md
+  - v2.4.3.2: releases/v2.4.3.2.md
+  - v2.4.3: releases/v2.4.3.md
+  - v2.4.2.3: releases/v2.4.2.3.md
+  - v2.4.2.2: releases/v2.4.2.2.md
+  - v2.4.2.1: releases/v2.4.2.1.md
+  - v2.4.2: releases/v2.4.2.md
+  - v2.4.1.2: releases/v2.4.1.2.md
+  - v2.4.1: releases/v2.4.1.md
+  - v2.4.0.3: releases/v2.4.0.3.md
+  - v2.4.0.2: releases/v2.4.0.2.md
+  - v2.4: releases/v2.4.md
+  - v2.3.2.7: releases/v2.3.2.7.md
+  - v2.3.2.6: releases/v2.3.2.6.md
+  - v2.3.2.5: releases/v2.3.2.5.md
+  - v2.3.2.4: releases/v2.3.2.4.md
+  - v2.3.2.3: releases/v2.3.2.3.md
+  - v2.3.2.2: releases/v2.3.2.2.md
+  - v2.3.2.1: releases/v2.3.2.1.md
+  - v2.3.2: releases/v2.3.2.md
+  - v2.3.1.10: releases/v2.3.1.10.md
+  - v2.3.1.9: releases/v2.3.1.9.md
+  - v2.3.1.4: releases/v2.3.1.4.md
+  - v2.3.1.1: releases/v2.3.1.1.md
+  - v2.3.1: releases/v2.3.1.md
+  - v2.3.0.5: releases/v2.3.0.5.md
+  - v2.3.0.4: releases/v2.3.0.4.md
+  - v2.3.0.3: releases/v2.3.0.3.md
+  - v2.3: releases/v2.3.md
+  - v2.2.1.12: releases/v2.2.1.12.md
+  - v2.2.1.10: releases/v2.2.1.10.md
+  - v2.2.1.9: releases/v2.2.1.9.md
+  - v2.2.1.8: releases/v2.2.1.8.md
+  - v2.2.1.7: releases/v2.2.1.7.md
+  - v2.2.1.6: releases/v2.2.1.6.md
+  - v2.2.1.5: releases/v2.2.1.5.md
+  - v2.2.1.4: releases/v2.2.1.4.md
+  - v2.2.1.3: releases/v2.2.1.3.md
+  - v2.2.1.2: releases/v2.2.1.2.md
+  - v2.2.1.1: releases/v2.2.1.1.md
+  - v2.2.1: releases/v2.2.1.md
+  - v2.2.0: releases/v2.2.0.md
+  - v2.1.9.2: releases/v2.1.9.2.md
+  - v2.1.9.1: releases/v2.1.9.1.md
+  - v2.1.9: releases/v2.1.9.md
+  - v2.1.8: releases/v2.1.8.md
+  - v2.1.7.1: releases/v2.1.7.1.md
+  - v2.1.7: releases/v2.1.7.md
+  - v2.1.6: releases/v2.1.6.md
+  - v2.1.5.6: releases/v2.1.5.6.md
+  - v2.1.5.4: releases/v2.1.5.4.md
+  - v2.1.5: releases/v2.1.5.md
+  - v2.1.4.5: releases/v2.1.4.5.md
+markdown_extensions:
+- pymdownx.highlight
+- pymdownx.superfences
+- pymdownx.tabbed
+- pymdownx.emoji
+- admonition
+- footnotes
+- toc:
+    permalink: true
+plugins:
+- search
+edit_uri: edit/main/
+copyright: Copyright &copy; 2025 Practera

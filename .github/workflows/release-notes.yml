@@ -1,0 +1,122 @@
+name: Release Notes Automation
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_string:
+        description: 'Full release string as in Jira (e.g., Release 2.4.5, Hotfix 2.4.5.1)'
+        required: true
+        type: string
+      processor_model:
+        description: 'Processes raw Jira issues into a technical summary. gpt-4o (highest quality/cost), gpt-4o-mini (balanced).'
+        required: true
+        type: choice
+        default: 'gpt-4o-mini'
+        options:
+          - gpt-4o
+          - o4-mini
+          - gpt-4.1-mini
+          - gpt-4o-mini
+          - gpt-4.1-nano
+      organizer_model:
+        description: 'Formats the technical summary into final release notes. gpt-4o-mini (balanced), gpt-4.1-nano (cheapest).'
+        required: true
+        type: choice
+        default: 'gpt-4o-mini'
+        options:
+          - gpt-4o
+          - o4-mini
+          - gpt-4.1-mini
+          - gpt-4o-mini
+          - gpt-4.1-nano
+      release_date:
+        description: |
+          📅 RELEASE DATE (Optional) - Format: YYYY-MM-DD (e.g., 2025-09-10)
+          
+          ⚠️  IMPORTANT GUIDELINES:
+          • Use EXACT format: YYYY-MM-DD (4-digit year, 2-digit month, 2-digit day)
+          • Date CANNOT be in the future
+          • If left empty, today's date will be used automatically
+          • Invalid formats will STOP the workflow with an error
+          
+          ✅ Valid examples: 2025-09-10, 2025-12-01, 2024-08-15
+          ❌ Invalid: 9/10/2025, 2025-9-10, 10-09-2025, 2025/09/10
+          
+          💡 TIP: Double-check your date format before running!
+        required: false
+        type: string
+        default: ''
+
+jobs:
+  release-notes:
+    runs-on: ubuntu-latest
+    env:
+      RELEASE_STRING: ${{ github.event.inputs.release_string }}
+      PROCESSOR_MODEL: ${{ github.event.inputs.processor_model }}
+      ORGANIZER_MODEL: ${{ github.event.inputs.organizer_model }}
+      RELEASE_DATE: ${{ github.event.inputs.release_date }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run release pipeline
+        run: |
+          chmod +x release_pipeline.sh
+          ./release_pipeline.sh
+        env:
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          JIRA_BASE_URL: https://intersective.atlassian.net
+          JIRA_USER_EMAIL: sunil@practera.com
+          RELEASE_STRING: ${{ github.event.inputs.release_string }}
+          PROCESSOR_MODEL: ${{ github.event.inputs.processor_model }}
+          ORGANIZER_MODEL: ${{ github.event.inputs.organizer_model }}
+          RELEASE_DATE: ${{ github.event.inputs.release_date }}
+
+      - name: Commit release files to source branch
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add docs/releases/ mkdocs.yml
+          git diff --staged --quiet || git commit -m "feat: Add release notes for ${{ github.event.inputs.release_string }}"
+          git push origin release/live
+
+      - name: Build documentation
+        run: |
+          mkdocs build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/release/live'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          cname: support.practera.com
+
+# Notes:
+# - Set the following secrets in your repository's GitHub Secrets:
+#   - JIRA_API_TOKEN: Your Jira API token
+#   - OPENAI_API_KEY: Your OpenAI API key
+#   - JIRA_BASE_URL: Your Jira instance URL (e.g., https://your-domain.atlassian.net)
+#   - JIRA_USER_EMAIL: Your Jira user email
+# - Set up GitHub Pages to deploy from the gh-pages branch
+# - Custom domain: support.practera.com
+# - This workflow is only triggered manually and will not run on push or PR events
+# - All navigation updates are handled by update_nav.py; do not edit mkdocs.yml manually.
+# 
+# Release Date Feature (Added Sept 2025):
+# - Optional release_date input allows custom release dates for future releases
+# - Strict validation: YYYY-MM-DD format, cannot be future date, must be valid date
+# - If no date provided, current date is used automatically
+# - This feature is for NEW releases only - does not affect existing published releases 

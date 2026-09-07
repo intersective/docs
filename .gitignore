@@ -1,0 +1,22 @@
+# MkDocs build outputs
+site/
+site-dev/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+venv/
+pvenv/
+
+# Temp files from release pipeline
+*_raw.yaml
+*_technical_summary.md
+
+# macOS
+.DS_Store
+
+# Editor
+.idea/
+*.swp

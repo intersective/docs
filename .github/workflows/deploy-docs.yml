@@ -1,0 +1,159 @@
+name: Deploy Documentation
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to deploy from (leave empty for release/live)'
+        required: false
+        type: string
+        default: 'release/live'
+      force_deploy:
+        description: 'Force deployment even if there are no changes'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch || 'release/live' }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # - name: Validate documentation
+      #   run: |
+      #     echo "🔍 Validating MkDocs configuration..."
+      #     mkdocs config
+          
+      #     echo "🔍 Checking for broken links in navigation..."
+      #     python -c "
+      #     import yaml
+      #     import os
+          
+      #     with open('mkdocs.yml', 'r') as f:
+      #         config = yaml.safe_load(f)
+          
+      #     def check_nav_files(nav_item, path=''):
+      #         if isinstance(nav_item, dict):
+      #             for key, value in nav_item.items():
+      #                 check_nav_files(value, f'{path}/{key}')
+      #         elif isinstance(nav_item, list):
+      #             for item in nav_item:
+      #                 check_nav_files(item, path)
+      #         elif isinstance(nav_item, str) and nav_item.endswith('.md'):
+      #             file_path = f'docs/{nav_item}' if not nav_item.startswith('/') else nav_item[1:]
+      #             if not os.path.exists(file_path):
+      #                 print(f'❌ Missing file: {file_path}')
+      #                 exit(1)
+          
+      #     nav = config.get('nav', [])
+      #     check_nav_files(nav)
+      #     print('✅ All navigation files exist')
+      #     "
+
+
+
+      - name: Build documentation
+        run: |
+          echo "🔨 Building MkDocs site..."
+          mkdocs build --verbose
+          
+          echo "📊 Build summary:"
+          echo "- Site directory: $(pwd)/site"
+          echo "- Files generated: $(find site -type f | wc -l)"
+          echo "- Total size: $(du -sh site | cut -f1)"
+
+      - name: Test built site
+        run: |
+          echo "🧪 Testing built site..."
+          
+          # Check if critical files exist
+          critical_files=(
+            "site/index.html"
+            "site/faq/index.html"
+            "site/releases/index.html"
+            "site/help-articles/onboarding/index.html"
+          )
+          
+          for file in "${critical_files[@]}"; do
+            if [ -f "$file" ]; then
+              echo "✅ $file exists"
+            else
+              echo "❌ Missing critical file: $file"
+              exit 1
+            fi
+          done
+          
+          # Check if assets are present
+          if [ -d "site/assets" ]; then
+            echo "✅ Assets directory exists"
+          fi
+          
+          if [ -d "site/stylesheets" ]; then
+            echo "✅ Stylesheets directory exists"
+          fi
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          publish_branch: gh-pages
+          cname: support.practera.com
+          force_orphan: ${{ github.event.inputs.force_deploy }}
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: |
+            Deploy documentation to support.practera.com
+            
+            Source: ${{ github.sha }}
+            Branch: ${{ github.ref_name }}
+            Deployed by: ${{ github.actor }}
+
+      - name: Deployment summary
+        run: |
+          echo "## 🚀 Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Setting | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|---------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| **Domain** | \`support.practera.com\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Branch** | \`${{ github.ref_name }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Commit** | \`${{ github.sha }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Deployed by** | @${{ github.actor }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🌐 Access your site:" >> $GITHUB_STEP_SUMMARY
+          echo "- **Main site**: https://support.practera.com" >> $GITHUB_STEP_SUMMARY
+          echo "- **FAQ section**: https://support.practera.com/faq/" >> $GITHUB_STEP_SUMMARY
+          echo "- **Release notes**: https://support.practera.com/releases/" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "⏱️ Deployment may take 2-5 minutes to be available due to CDN caching." >> $GITHUB_STEP_SUMMARY
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "## ❌ Deployment Failed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "The deployment to support.practera.com has failed." >> $GITHUB_STEP_SUMMARY
+          echo "Please check the workflow logs for details." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔧 Common issues:" >> $GITHUB_STEP_SUMMARY
+          echo "- Missing or broken markdown files" >> $GITHUB_STEP_SUMMARY
+          echo "- Invalid mkdocs.yml configuration" >> $GITHUB_STEP_SUMMARY
+          echo "- Missing dependencies in requirements.txt" >> $GITHUB_STEP_SUMMARY
+          echo "- Navigation links pointing to non-existent files" >> $GITHUB_STEP_SUMMARY 

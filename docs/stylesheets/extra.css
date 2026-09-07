@@ -1,0 +1,389 @@
+:root {
+  --md-primary-fg-color: #2A78C3;
+  --md-primary-fg-color--light: #4A98E3;
+  --md-primary-fg-color--dark: #0A58A3;
+  --md-accent-fg-color: #4A98E3;
+}
+
+/* Custom logo size */
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 84px;
+  width: auto;
+}
+
+/* Custom header styles */
+.md-header {
+  background-color: var(--md-primary-fg-color);
+}
+
+/* Custom link colors - Using darker variant for better accessibility (WCAG AAA compliance) */
+.md-content a {
+  color: var(--md-primary-fg-color--dark);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.md-content a:hover {
+  color: var(--md-primary-fg-color);
+  text-decoration-thickness: 2px;
+}
+
+/* Custom navigation colors */
+.md-nav__link:active,
+.md-nav__link--active {
+  color: var(--md-primary-fg-color);
+}
+
+/* Custom header logo settings */
+.md-header__button.md-logo {
+  padding: 0.2rem;
+}
+
+/* Path fixing for images - ensure images render correctly in both environments */
+img[src^="../"] {
+  max-width: 100%;
+}
+
+/* Make the right sidebar Table of Contents sticky */
+.md-sidebar--secondary {
+  position: sticky;
+  top: 80px;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+
+/* Enhanced Navigation with Smooth Dropdown Effects */
+.md-nav__item > .md-nav__link {
+  font-weight: 500 !important;
+  font-size: 1.0em !important;
+  color: #333 !important;
+  padding: 10px 16px !important;
+  margin: 2px 0 !important;
+  border-radius: 6px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.md-nav__item > .md-nav__link:hover {
+  background: linear-gradient(135deg, rgba(42, 120, 195, 0.08), rgba(42, 120, 195, 0.12));
+  color: var(--md-primary-fg-color) !important;
+  transform: translateX(3px);
+  box-shadow: 0 2px 8px rgba(42, 120, 195, 0.15);
+}
+
+.md-nav__item > .md-nav__link--active {
+  background: linear-gradient(135deg, var(--md-primary-fg-color), #2563eb);
+  color: white !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 12px rgba(42, 120, 195, 0.3);
+}
+
+/* Smooth Section Expansion Animation */
+.md-nav__item--nested > .md-nav__link {
+  background: linear-gradient(90deg, transparent, rgba(42, 120, 195, 0.02));
+  border-left: 3px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.md-nav__item--nested > .md-nav__link:hover {
+  background: linear-gradient(90deg, rgba(42, 120, 195, 0.08), rgba(42, 120, 195, 0.12));
+  border-left: 3px solid var(--md-primary-fg-color);
+  transform: translateX(2px);
+  box-shadow: 0 3px 10px rgba(42, 120, 195, 0.12);
+}
+
+.md-nav__item--nested > .md-nav__link--active {
+  background: linear-gradient(90deg, rgba(42, 120, 195, 0.15), rgba(42, 120, 195, 0.1));
+  border-left: 3px solid var(--md-primary-fg-color);
+  color: var(--md-primary-fg-color) !important;
+  font-weight: 600;
+}
+
+/* Nested Navigation Smooth Slide Animation - Only for Sub-items */
+.md-nav__item .md-nav .md-nav {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(-10px);
+  margin-left: 8px;
+  border-left: 2px solid rgba(42, 120, 195, 0.1);
+}
+
+.md-nav__item--active .md-nav .md-nav,
+.md-nav__item:hover .md-nav .md-nav {
+  opacity: 1;
+  max-height: 1000px;
+  transform: translateY(0);
+}
+
+/* Ensure main sections are always visible */
+.md-nav--primary .md-nav__item .md-nav {
+  opacity: 1 !important;
+  max-height: none !important;
+  transform: translateY(0) !important;
+  overflow: visible !important;
+}
+
+/* Force secondary navigation to show all sections */
+.md-nav--secondary .md-nav__item .md-nav {
+  opacity: 1 !important;
+  max-height: none !important;
+  transform: translateY(0) !important;
+  overflow: visible !important;
+}
+
+/* Section Toggle Animation - Only for collapsible items */
+.md-nav__item--nested .md-nav__item--nested > .md-nav__link::after {
+  content: '▸';
+  float: right;
+  transition: transform 0.3s ease;
+  color: rgba(42, 120, 195, 0.6);
+  font-size: 0.8em;
+}
+
+.md-nav__item--nested .md-nav__item--nested:hover > .md-nav__link::after,
+.md-nav__item--nested .md-nav__item--nested.md-nav__item--active > .md-nav__link::after {
+  transform: rotate(90deg);
+  color: var(--md-primary-fg-color);
+}
+
+/* Sub-navigation Items */
+.md-nav .md-nav__item .md-nav__link {
+  font-size: 0.9em !important;
+  padding: 8px 16px 8px 20px !important;
+  color: #555 !important;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  margin: 1px 0;
+}
+
+.md-nav .md-nav__item .md-nav__link:hover {
+  background-color: rgba(42, 120, 195, 0.08);
+  color: var(--md-primary-fg-color) !important;
+  transform: translateX(4px);
+  padding-left: 24px !important;
+}
+
+.md-nav .md-nav__item .md-nav__link--active {
+  background: linear-gradient(90deg, rgba(42, 120, 195, 0.12), transparent);
+  color: var(--md-primary-fg-color) !important;
+  font-weight: 500;
+  border-left: 2px solid var(--md-primary-fg-color);
+}
+
+
+
+/* Professional Content Typography - Industry Standard Sizing */
+.md-content h1 {
+  font-weight: 600 !important;
+  font-size: 1.8em !important;
+  color: var(--md-primary-fg-color) !important;
+  margin-bottom: 1rem !important;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid var(--md-primary-fg-color);
+  line-height: 1.2;
+}
+
+.md-content h2 {
+  font-weight: 500 !important;
+  font-size: 1.4em !important;
+  color: var(--md-primary-fg-color--dark) !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.8rem !important;
+  line-height: 1.3;
+}
+
+.md-content h3 {
+  font-weight: 500 !important;
+  font-size: 1.2em !important;
+  color: var(--md-primary-fg-color) !important;
+  margin-top: 1.2rem !important;
+  margin-bottom: 0.6rem !important;
+  line-height: 1.4;
+}
+
+.md-content h4 {
+  font-weight: 500 !important;
+  font-size: 1.1em !important;
+  color: var(--md-primary-fg-color--dark) !important;
+  margin-top: 1rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Professional Table Styling */
+.md-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.2rem 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 0.9em;
+}
+
+.md-content table th {
+  background-color: var(--md-primary-fg-color);
+  color: white;
+  font-weight: 500;
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 0.9em;
+  letter-spacing: 0.3px;
+}
+
+.md-content table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e5e5e5;
+  vertical-align: top;
+  line-height: 1.4;
+}
+
+.md-content table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.md-content table tr:hover {
+  background-color: rgba(42, 120, 195, 0.03);
+}
+
+.md-content table td a {
+  font-weight: 500;
+  text-decoration: none;
+  padding: 3px 6px;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+}
+
+.md-content table td a:hover {
+  background-color: var(--md-primary-fg-color);
+  color: white !important;
+}
+
+/* Subtle Section Dividers */
+.md-content hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, var(--md-primary-fg-color), var(--md-accent-fg-color));
+  margin: 1.5rem 0;
+  opacity: 0.3;
+}
+
+/* Refined List Styling */
+.md-content ul li {
+  margin-bottom: 0.4rem;
+  line-height: 1.5;
+}
+
+.md-content ul li strong {
+  color: var(--md-primary-fg-color);
+  font-weight: 500;
+}
+
+/* Code and Pre Blocks */
+.md-content pre,
+.md-content code {
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+.md-content pre {
+  border-left: 3px solid var(--md-primary-fg-color);
+}
+
+/* Subtle Image Styling */
+.md-content img {
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin: 0.8rem 0;
+  transition: transform 0.2s ease;
+}
+
+.md-content img:hover {
+  transform: scale(1.01);
+}
+
+/* Professional spacing for content sections */
+.md-content > * {
+  margin-bottom: 0.8rem;
+}
+
+.md-content > h2,
+.md-content > h3 {
+  margin-top: 1.5rem;
+}
+
+/* Professional paragraph spacing */
+.md-content p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Balanced Navigation Hierarchy - Label vs Navigation Elements */
+.md-nav__title {
+  font-size: 1.1em !important;
+  font-weight: 500 !important;
+  color: var(--md-primary-fg-color--dark) !important;
+  padding: 12px 16px !important;
+  margin-bottom: 8px !important;
+  border-bottom: 1px solid rgba(42, 120, 195, 0.2);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.md-nav__link {
+  font-size: 0.9em;
+  line-height: 1.4;
+} 
+
+/* Responsive design improvements */
+@media screen and (max-width: 768px) {
+  .md-content h1 {
+    font-size: 1.6em !important;
+  }
+  
+  .md-content h2 {
+    font-size: 1.3em !important;
+  }
+  
+  .md-content h3 {
+    font-size: 1.15em !important;
+  }
+  
+  .md-content table {
+    font-size: 0.85em;
+  }
+  
+  .md-nav__title {
+    font-size: 1.05em !important;
+    padding: 10px 12px !important;
+  }
+  
+  .md-nav__item > .md-nav__link {
+    font-size: 0.95em !important;
+    padding: 8px 12px !important;
+  }
+  
+  .md-nav .md-nav__item .md-nav__link {
+    font-size: 0.85em !important;
+    padding: 6px 12px 6px 16px !important;
+  }
+}
+
+/* Fix anchor scroll positioning for fixed header - ensures headings are visible when navigating via anchor links */
+.md-content h1,
+.md-content h2,
+.md-content h3,
+.md-content h4,
+.md-content h5,
+.md-content h6 {
+  scroll-margin-top: 90px; /* Header height (84px) + buffer (6px) */
+}
+
+/* Smooth scrolling for better navigation UX */
+html {
+  scroll-behavior: smooth;
+} 
