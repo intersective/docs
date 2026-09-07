@@ -63,3 +63,5 @@ nav:
     - Status Matrix: developer/alignment/index.md
   - API Reference:
     - Overview: developer/api/index.md
+  - Site Setup:
+    - Cloudflare / Auth Setup: developer/cloudflare-setup.md
