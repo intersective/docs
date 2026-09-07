@@ -17,7 +17,7 @@ flowchart LR
 
 ## 1. Experience Design
 
-Instructional designers (authors) use our AI-powered authoring tools to design programme structures before learners are enrolled. This stage covers setting learning objectives, skills development goals,scaffolding the experience structure, authoring content and assessments, setting up schedules, configuring automated workflows and selecting/customizing AI experts.
+A well-designed experience is the foundation everything else depends on. Instructional designers use Practera's AI-powered authoring environment to set learning objectives, scaffold the programme structure, author content and assessments, configure schedules and automation, and deploy AI expert assistants — before a single learner is enrolled.
 
 ### Key Capabilities
 - **Learning objectives** — Start from a description of the experience, then use AI to help define learning objectives, skills development goals, credentials (badges, certificates).
@@ -50,17 +50,16 @@ Instructional designers (authors) use our AI-powered authoring tools to design p
 
 ## 2. Project Sourcing
 
-The project sourcing stage enables institutions to build a pipeline of real-world industry projects. Administrators manage campaigns, clients submit briefs via an AI-guided intake flow, and learners apply for projects during defined windows.
+Sourcing high-quality real-world projects is one of the hardest operational challenges in work-based learning — most institutions rely on ad-hoc email chains, spreadsheets, and manual follow-up. Practera's project sourcing stage gives institutions a purpose-built pipeline: structured campaigns, AI-guided client intake, a governed approval workflow, and integrated assignment into learning experiences.
 
 ### Key Capabilities
 
-- **Campaign management** — create campaigns with project brief templates, set active windows, generate shareable intake URLs
-- **AI-guided intake** — external client chatbot guided by templates; traditional form alternative; draft-on-first-capture; local storage resumption
-- **Brief lifecycle** — `DRAFT → CLIENT_APPROVED → ADMIN_APPROVED → ARCHIVED`; admin edit requires client re-approval
-- **Email notifications** — edit links sent to clients on submission; admin change notifications
-- **Experience assignment** — assign approved briefs to Practera experiences via GraphQL API; auto-create experience records
-- **Learner application** — apply for up to 5 projects with priorities (1–5) during admin-set application windows
-- **Team creation** — Practera API integration for team formation
+- **Campaign management** — Coordinators need a structured way to invite industry partners and track which projects are available to learners in each experience. Campaigns give every sourcing drive its own identity: an active window, a set of project brief templates to guide submissions, and a unique shareable URL that can be sent to any number of industry contacts — no account required on their end.
+- **AI-guided project brief intake** — The quality of a work-based learning experience depends heavily on the quality of the project brief. Practera's AI chatbot walks industry clients through producing a structured, complete brief using the programme's own templates as its guide — asking targeted follow-ups, validating completeness, and auto-saving progress so clients can return and pick up where they left off. A traditional form is available for clients who prefer it. Briefs are created as drafts the moment a client provides their name and email, so no work is ever lost.
+- **Brief quality and approval workflow** — Not every submitted brief is ready for learners. The brief lifecycle (`DRAFT → CLIENT_APPROVED → ADMIN_APPROVED → ARCHIVED`) gives coordinators a clear quality gate: clients submit and approve their own briefs, coordinators review and approve for assignment, and any admin edit triggers a client re-approval cycle so changes are never made unilaterally. Coordinators can archive briefs that are no longer relevant without losing the history.
+- **Experience assignment and application windows** — Once a brief is approved, coordinators assign it to one or more Practera learning experiences and set the window during which learners can apply. Application windows can be closed per brief if a project is already fully subscribed, giving coordinators fine-grained control without disrupting the rest of the cohort.
+- **Learner project application** — Learners browse all projects available in their experience and apply for up to five, ranking their preferences from highest to lowest priority. This preference data gives coordinators and project providers everything they need to make considered matching decisions — and learners have skin in the game from day one.
+- **Team formation** — Once matching decisions are made, coordinators create teams directly from the project hub, linking learners to their projects and populating the teams that the rest of the platform's delivery and reporting features will use.
 
 ### Systems
 
@@ -81,19 +80,19 @@ The project sourcing stage enables institutions to build a pipeline of real-worl
 
 ## 3. Experience Delivery
 
-The delivery stage encompasses everything learners and coordinators interact with during an active programme — from the learner's activity tree and assessment submissions through to coordinator-side feedback pipelines, enrolment management, and real-time communications.
+The delivery stage is where the designed experience meets the live cohort. It spans everything learners interact with day-to-day — their activity tree, assessments, AI expert chat, and peer collaboration — and everything coordinators use to monitor, support, and intervene: feedback pipelines, communications, enrolment tools, and cohort dashboards.
 
 ### Key Capabilities
 
-- **Learner journey** — home dashboard, milestone/activity tree, topic content, assessment submission and review
-- **Feedback pipeline** — Managing feedback at scale is one of the hardest operational problems in work-based learning. Practera's feedback pipeline gives coordinators full visibility and control across a 4-step lifecycle: Submitted → Assigned → Reviewed → Acknowledged. Reviewers are assigned manually or via automated rules; coordinators can send reminders, reopen reviews, or reassign without touching the learner's submission. **Score moderation** lets coordinators override reviewer scores when quality or bias concerns arise, with the moderated score taking precedence in reporting. **AI quality scoring** automatically evaluates the quality of every review at submission time — flagging thin, off-topic, or low-effort feedback before it reaches the learner. **Reviewer performance tracking** aggregates helpfulness, timeliness, and AI quality scores per reviewer per assessment, giving coordinators data to coach or reassign underperforming reviewers. **Learner review ratings** close the loop: after receiving feedback, learners can rate its helpfulness and add comments and tags, providing a bottom-up quality signal alongside the AI assessment. Together these features make it possible to maintain high feedback quality across large, diverse cohorts.
-- **Communication** — Pusher-backed chat (channels, DMs, announcements), scheduled messages, email notifications
-- **Teams** — formation (manual/auto-assign), project briefs, team todos, workload balance
-- **Events and meetings** — bookable events (capacity, QR attendance), video meetings, polls
-- **Enrolment management (admin)** — bulk CSV import, invitation/reminder emails, per-learner report cards
-- **Pulse checks** — learner wellbeing surveys with configurable question sequences
-- **Badges, achievements, certificates** — credential definitions, xAPI criteria, certificate URL generation
-- **Progress tracking** — milestone progress %, due dates, engagement metrics, skills growth
+- **Learner journey** — The learner's experience is structured as a tree: top-level phases containing activities, each activity a curated set of tasks. The home dashboard surfaces current progress, upcoming due dates, pulse check prompts, and earned achievements at a glance. From there, learners navigate into activities to read topic content, submit assessments, attend events, collaborate on team tasks, or interact with an AI expert assistant — all within a single responsive app that works on mobile and desktop without reinstallation.
+- **Feedback pipeline** — Managing feedback at scale is one of the hardest operational problems in work-based learning. Practera's feedback pipeline gives coordinators full visibility and control across a 4-step lifecycle: Submitted → Assigned → Reviewed → Acknowledged. Reviewers are assigned manually or via automated rules; coordinators can send reminders, reopen reviews, or reassign without touching the learner's submission. **Score moderation** lets coordinators override reviewer scores when quality or bias concerns arise, with the moderated score taking precedence in reporting. **AI quality scoring** automatically evaluates the quality of every review at submission time — flagging thin, off-topic, or low-effort feedback before it reaches the learner. **Reviewer performance tracking** aggregates helpfulness, timeliness, and AI quality scores per reviewer per assessment, giving coordinators data to coach or reassign underperforming reviewers. **Learner review ratings** close the loop: after receiving feedback, learners rate its helpfulness and add comments and tags, providing a bottom-up quality signal alongside the AI assessment. Together, these features make it possible to maintain high feedback quality across large, diverse cohorts.
+- **Communication** — Maintaining a cohort without timely communication creates drop-off and disengagement. Practera's communication layer runs across three channels: real-time chat (Pusher-backed channels, DMs, and announcements, accessible to learners and coordinators alike), scheduled messages (time-targeted broadcasts tied to milestones or calendar events), and email notifications (automated and manual, triggered by the platform or sent directly by the coordinator). All three are managed from a single comms hub.
+- **Teams** — Work-based learning is inherently collaborative. Coordinators form teams manually or auto-assign by cohort size, with the platform flagging unassigned learners. Each team has a shared project brief, a collaborative todo list visible to all members, and a workload balance view that helps coordinators spot teams where contribution is unevenly distributed.
+- **Events and meetings** — Scheduled touchpoints keep blended cohorts on track. Learners book into events (workshops, webinars, mentoring sessions) directly from the app, with the platform enforcing capacity limits and sending reminders. Coordinators track attendance via QR check-in and run meeting polls to coordinate times across distributed teams. Video meeting links attach directly to event records so learners have a single source of truth for where to show up.
+- **Enrolment management** — Cohort logistics shouldn't require spreadsheets. Coordinators manage all enrolments from a single paginated table: filter by role and progress, bulk-import via CSV, send invitation and reminder emails, unenroll or reset individual learners, and export the full cohort to CSV. Per-learner report cards give coordinators a milestone-level view of any individual's progress without leaving the admin interface.
+- **Pulse checks** — Skills development is a process, not a moment. Pulse checks surface learner-reported progress on configurable skill dimensions at regular intervals throughout the experience, building a longitudinal picture of how each learner feels their capability is growing. The traffic light indicator on the learner's home page makes it obvious when a check-in is due, keeping response rates high without coordinator chasing.
+- **Credentials and recognition** — Learners need to see their progress recognised in ways that matter beyond the platform. Practera awards badges and achievements when ELSA-defined criteria are met (completion milestones, assessment scores, peer ratings) and generates shareable certificate URLs backed by xAPI-linked credential definitions. Credentials earned in Practera can be verified by employers and linked to a learner's external portfolio.
+- **Progress and engagement tracking** — Coordinators and learners both need visibility into where the cohort stands. Milestone completion percentages, due date timelines, and engagement metrics are available to learners in real time and to coordinators on their dashboard — giving both parties a shared reference point for check-ins and interventions before small problems become drop-off.
 
 ### Systems
 
@@ -115,17 +114,17 @@ The delivery stage encompasses everything learners and coordinators interact wit
 
 ## 4. Reporting
 
-The reporting stage surfaces programme impact data for coordinators, programme managers, and institutional administrators. It spans configurable KPI dashboards, skills growth visualisations, custom report builders, and cohort-level exports.
+Demonstrating the impact of work-based learning is essential for institutional buy-in, industry partner retention, and programme improvement — but it is also one of the hardest things to do well. Practera's reporting stage turns the data generated across the other three value chain stages into actionable insights for coordinators, programme managers, institutional administrators, and industry partners.
 
 ### Key Capabilities
 
-- **Configurable metrics and KPIs** — multi-source, multi-aggregation metric definitions; value history; answer distribution
-- **Skills growth analysis** — grouped bar chart across pulse sequences; per-role breakdown
-- **Custom report builder** — section-based editor, 5 chart types (area, bar, pie, data-table, KPI card), shareable preview
-- **Feedback status matrix** — reviewer × assessment completion accountability view
-- **Team 360 reports** — peer contribution rating analysis
-- **Cohort reports** — aggregated learner progress; CSV/XLSX export
-- **Audit log** — programme activity log viewer
+- **Configurable metrics and KPIs** — Every institution has different definitions of success. Coordinators define their own KPIs from any combination of data sources (assessment scores, submission rates, engagement events, pulse check responses), aggregation methods (mean, count, completion rate), and filter criteria (by role, cohort status, time window). Metric values update on-demand and are tracked over time, so coordinators can see whether the experience is improving across successive cohorts.
+- **Skills growth** — Pulse check responses across a cohort tell a compelling story about capability development — but only when seen together over time. The skills growth view plots each learner's and the whole cohort's self-reported skill scores across the full sequence of pulse checks, broken down by role. Institutions can present this directly to industry partners and accreditation bodies as longitudinal evidence of programme impact.
+- **Custom report builder** — Different stakeholders need different cuts of the data. The report builder lets coordinators and programme managers assemble bespoke reports from sections of charts (area, bar, pie, data table, KPI card), configure each chart's scope and filters, preview the result in a shareable read-only view, and distribute the link. Reports persist across cohort cycles and can be updated in place as new data comes in.
+- **Feedback status matrix** — In large cohorts with multiple reviewers and assessment tasks, it is easy for reviews to fall through the cracks. The feedback status matrix shows every reviewer as a row and every moderated assessment as a column, with each cell colour-coded by completion status (Complete, Pending, Overdue, Unassigned). Coordinators identify at a glance which reviews are overdue, who is behind, and what interventions are needed — without digging through individual submissions.
+- **Team 360 analysis** — Peer contribution ratings from Team 360 assessments are aggregated into a report showing how each team member's peers rated their contribution across the programme's rating dimensions. This data is invaluable for mentors and coordinators conducting end-of-programme debrief conversations, and for institutions seeking evidence of collaborative work skills development.
+- **Cohort reports and exports** — Programme managers and institutional administrators need summary data for governance, accreditation, and continuous improvement. Cohort reports aggregate learner progress, completion rates, and engagement metrics at the experience level. All data exports to CSV or XLSX for further analysis in institutional reporting systems.
+- **Audit log** — A complete activity log of programme events gives coordinators and CS staff a reliable audit trail for troubleshooting, compliance, and quality assurance — surfacing exactly what happened, when, and for whom.
 
 ### Systems
 
