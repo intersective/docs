@@ -2,7 +2,7 @@
 
 # Practera Platform — Functional Specification
 
-Practera is an end-to-end platform for work-based and career-connected learning design and delivery, supporting fully online and blended experiences. It spans the full lifecycle from programme authorship through to industry project sourcing, learner delivery, and impact reporting. Each stage is implemented across purpose-built applications that share a common GraphQL API and authentication layer.
+Practera is an end-to-end platform for work-based and career-connected learning design and delivery, supporting fully online and blended experiences. It spans the full lifecycle from programme authorship through to industry project sourcing, learner delivery, and impact reporting. Each stage is implemented across purpose-built applications that share a unified authentication layer.
 
 ## Value Chain
 
@@ -17,18 +17,18 @@ flowchart LR
 
 ## 1. Experience Design
 
-Coordinators and administrators design programme structures before learners are enrolled. This stage covers everything from scaffolding the activity tree and authoring content through to configuring AI experts, custom roles, and LTI integrations.
+Instructional designers (authors) use our AI-powered authoring tools to design programme structures before learners are enrolled. This stage covers setting learning objectives, skills development goals,scaffolding the experience structure, authoring content and assessments, setting up schedules, configuring automated workflows and selecting/customizing AI experts.
 
 ### Key Capabilities
-
-- **Programme structure design** — milestones, activities, tasks, assessments; drag-drop reorder; role-based visibility; lock/reveal triggers
-- **Content authoring** — topics (rich text via TipTap), media library (TUS upload), assessment question builder
-- **Scheduling** — event calendar (ProScheduler), QR-based attendance, meeting polls, comms integration
-- **Automation (ELSA)** — rule-based triggers, credentials/badges, activity log
-- **AI expert configuration** — scoped experts (experience/institution/global), versioning, testing, knowledge files, library publishing
-- **Settings** — branding, taxonomy (configurable terminology), custom roles, LTI 1.3, AI model mappings
-- **Library** — cross-experience templates, media, AI experts
-- **Go-live checklist** — pre/post-launch validation
+- **Learning objectives** — Start from a description of the experience, then use AI to help define learning objectives, skills development goals, credentials (badges, certificates).
+- **Experience structure design** — Organise the experience into groups of tasks for each of the key roles (learner, mentor, admin, etc.). Set up assessments, content, scheduled events, team tasks, and simulations, with drag-drop reorder, role-based visibility, and lock/reveal triggers. A mentor, for example, sees a different experience structure than a learner — each role gets exactly the scaffolding they need.
+- **Customisation** — Give each experience its own identity so learners feel it belongs to their institution or programme. Set a custom brand (logo, colours, fonts), define the terminology that fits the context (e.g. rename "Milestones" to "Phases", create custom role names), and configure LTI 1.3 so learners can launch directly from their institution's LMS.
+- **Content authoring** — Designers author rich, engaging materials without leaving the platform. Topics support full rich text (headings, embeds, images, code blocks) via TipTap. Assessments are built with a point-and-click question builder supporting multiple types: slider ratings, single/multi-choice, long text, file uploads, and team member selectors. A shared media library lets assets be reused across activities and experiences, reducing duplication.
+- **Scheduling** — Blended experiences need face-to-face and virtual touchpoints coordinated across the cohort. Coordinators schedule recurring sessions and one-off events on a shared calendar, track attendance via QR check-in, run meeting polls to find times that work for everyone, and send targeted communications tied to session timing — all without leaving the platform.
+- **Automation (ELSA)** — At scale, coordinators can't personally nudge every learner at exactly the right moment. ELSA (the automation engine) fires rule-based triggers based on learner progress, calendar dates, or specific actions — sending messages, unlocking content, or awarding credentials automatically. Designers define the rules once; ELSA handles execution across the entire cohort.
+- **AI Experts** — Every experience can have its own AI-powered expert assistant, scoped to the programme's context and knowledge. Designers configure the expert's persona, upload domain knowledge files, test it against sample conversations, then publish proven experts to a shared library for reuse across other experiences. Experts are versioned so improvements can be rolled out without disrupting active cohorts.
+- **Library** — Successful programme components shouldn't be rebuilt from scratch. The library stores proven experience templates, media assets, and AI experts at the institution or global level, making them available for reuse across any experience. Designers browse and import from the library, dramatically reducing the time to launch new programmes.
+- **Go-live checklist** — Launching to live learners carries risk. The go-live checklist guides designers through a structured pre-launch review — confirming content is complete, settings are correct, enrolments are ready, and notifications are configured — before the experience goes live to the cohort.
 
 ### Systems
 
@@ -104,7 +104,7 @@ The delivery stage encompasses everything learners and coordinators interact wit
 ### Detailed Specs
 
 - [Admin App — Deliver specs](https://github.com/intersective/practera-admin-app/tree/main/specs/deliver/)
-- practera-app specs: **to be bootstrapped** — see [Alignment Status](alignment/index.md)
+- [Learner App — specs](https://github.com/intersective/practera-app/tree/main/specs/) (bootstrapped Sept 2026; see [Alignment Status](alignment/index.md) for refinement backlog)
 - [GraphQL API — Assessment mutations](https://github.com/intersective/practera-graphql-api/tree/main/specs/mutations/assessment.md)
 - [GraphQL API — Enrolment mutations](https://github.com/intersective/practera-graphql-api/tree/main/specs/mutations/enrolment.md)
 - [Developer Docs — Delivery stage detail](delivery/index.md)
